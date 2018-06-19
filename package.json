@@ -1,0 +1,27 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "description": "playground for typescript",
+  "main": "app.js",
+  "scripts": {
+    "start": "tsc && node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devnigam24/playground.git"
+  },
+  "keywords": [
+    "typeScript"
+  ],
+  "author": "devnigam24@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devnigam24/playground/issues"
+  },
+  "homepage": "https://github.com/devnigam24/playground#readme",
+  "dependencies": {
+    "@types/express": "^4.16.0",
+    "@types/node": "^10.3.4",
+    "express": "^4.16.3"
+  }
+}
