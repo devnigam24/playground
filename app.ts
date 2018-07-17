@@ -1,12 +1,26 @@
+"use strict";
+
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import router from './routes';
+import AppRouter from './routes';
 
-const app = express();
-app.use(express.static("."));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+class Application {
+    public app: express.Application;
 
-app.use(router);
+    private router: express.Router;
 
-export default app;
+    constructor() {
+        this.app = express();
+        this.router = new AppRouter().router;
+        this.appUse();
+    };
+
+    private appUse() {
+        this.app.use(express.static('.'));
+        this.app.use(bodyParser.json());
+        this.app.use(bodyParser.urlencoded({ extended: true }));
+        this.app.use(this.router);
+    }
+}
+
+export default Application;

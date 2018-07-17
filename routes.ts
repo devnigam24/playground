@@ -1,8 +1,27 @@
 import * as express from 'express';
-const router = express.Router();
+import { fakedb } from './db';
 
-router.get('/', (request, response) => {
-    response.sendFile(`${__dirname}/templates/index.html`);
-});
+class AppRouter {
+    public router: express.Router;
+    constructor() {
+        this.router = express.Router();
+        this.config();
+    }
 
-export default router;
+    config(): void {
+        this.router.use((request: express.Request, response: express.Response, next: express.NextFunction) => {
+            response.header("Access-Control-Allow-Origin", "*");
+            next();
+        });
+
+        this.router.get('/', (request: express.Request, response: express.Response): void => {
+            response.sendFile(`${__dirname}/templates/index.html`);
+        });
+
+        this.router.get('/db', (request: express.Request, response: express.Response): void => {
+            response.send(fakedb);
+        });
+    }
+};
+
+export default AppRouter;
