@@ -1,6 +1,15 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "removeComments": true
-    }
-}
+        "removeComments": true,
+        "target": "ES5",
+        "outDir": ".",
+        "rootDir": "."
+    },
+    "include": [
+        "**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]}

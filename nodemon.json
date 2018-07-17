@@ -6,10 +6,10 @@
     ],
     "verbose": true,
     "execMap": {
-      "ts": "tsc && node server.js"
+      "js": "tsc -p . && node server.js"
     },
     "env": {
       "NODE_ENV": "development"
     },
-    "ext": "ts"
+    "ext": "ts,html,json"
   }

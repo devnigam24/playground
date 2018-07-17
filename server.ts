@@ -1,5 +1,4 @@
 import * as http from 'http';
-import * as express from 'express';
 import App from './app';
 import ENV from './environment';
 

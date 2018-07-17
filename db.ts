@@ -1,6 +1,6 @@
 export const fakedb = {
     "id": "whatever",
-    "name": "start",
+    "name": "Kratos",
     "children": [{
         "id": "0.9685", "name": "contents:queue"
     }, {
