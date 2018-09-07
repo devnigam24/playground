@@ -3,7 +3,6 @@
       "*.js":true,
       "package-lock.json": true,
       "yarn.lock": true,
-      ".gitignore": true,
       "node_modules/": true,
       ".vscode/": true,
       "tsconfig.json": true,
@@ -14,5 +13,6 @@
     "prettier.singleQuote": true,
     "prettier.parser": "flow",
     "eslint.enable": true,
-    "html.format.enable": false
+    "html.format.enable": false,
+    "editor.tabSize": 2
   }
