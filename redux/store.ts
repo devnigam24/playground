@@ -1,13 +1,17 @@
-import { State } from './interfaces';
-import reducer from './reducers';
+import { State } from '../constants/interfaces';
+import { reducer } from './reducers';
+
+const initialState = {
+  applicationState: null,
+  value: 0,
+};
 
 class Store {
 
   public state: State;
 
   constructor() {
-    console.log('initiated store');
-    this.state = {};
+    this.state = initialState;
   }
 
   public getState(): State {
@@ -19,6 +23,4 @@ class Store {
   }
 }
 
-export default {
-  Store: new Store()
-}
+export default new Store();

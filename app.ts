@@ -5,16 +5,20 @@ import * as bodyParser from 'body-parser';
 import AppRouter from './routes';
 import Store from './redux/store';
 
+import { setApplicationState } from './constants/actions';
+
 class Application {
   public app: express.Application;
 
   private router: express.Router;
 
   constructor() {
+    Store.dispatch(setApplicationState('initializing'));
     this.app = express();
     this.router = new AppRouter().router;
     this.appUse();
     this.loadInitilizers();
+    Store.dispatch(setApplicationState('initialized'));
   };
 
   private appUse(): void {
@@ -24,8 +28,6 @@ class Application {
     this.app.use(this.router);
   }
 
-  private loadInitilizers(): void {
-    console.log(Store);
-  }
+  private loadInitilizers(): void {}
 }
 export default Application;

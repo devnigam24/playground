@@ -1,22 +1,31 @@
-import { State, ActionType } from './interfaces';
+import { State, ActionType, Action } from '../constants/interfaces';
 
-export default function reducer(state: State = {} as any, action: ActionType) {
+export const reducer = (state: State = {} as any, action: ActionType): State => {
   switch(action.type) {
-
-    case 'ADD_TWO_NUMBERS': {
-      const { value } = state;
-      console.log(value);
-      return state
-    }
 
     case 'INCREMENT_STATE': {
       const value = state.value + action.value;
-      state.value = value;
-      return state;
+      return (<any>Object).assign(state, { value });
+    }
+
+    case 'APPLICATION_STATE': {
+      return(<any>Object).assign(state, {
+        'applicationState': action.value
+      });
     }
 
     default: {
       return state;
     }
   }
+}
+
+export const makeActionCreator = (type: string, ...args: Array<string>): Action => {
+  return (...args: Array<any>) => {
+    let action = { type };
+    args.forEach(element => {
+      action[element] = element;
+    });
+    return action;
+  };
 }
