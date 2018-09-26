@@ -1,12 +1,13 @@
 {
     "files.exclude": {
-      "*.js":true,
-      "package-lock.json": true,
-      "yarn.lock": true,
-      "node_modules/": true,
+      "**/*.DS_Store": true,
       ".vscode/": true,
+      "**/*.js": true,
+      "**/.git": false,
+      "node_modules/": true,
+      "package-lock.json": true,
       "tsconfig.json": true,
-      ".DS_Store": true
+      "yarn.lock": true
     },
     "prettier.printWidth": 100,
     "prettier.tabWidth": 2,

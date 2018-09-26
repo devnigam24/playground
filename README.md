@@ -1,6 +1,6 @@
-## Playground
+# Playground
 
-# A Tutorial Project To Get Hands On Experience With
+## A Tutorial Project To Get Hands On Experience With
  - [Typescript](https://www.typescriptlang.org/)
  - [Redux](https://redux.js.org/)
  - [Express](http://expressjs.com/)
