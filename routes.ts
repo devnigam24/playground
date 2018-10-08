@@ -15,7 +15,7 @@ class AppRouter extends AbstractRouter {
       });
 
       this.router.get('/start', (request: ExpressHttp.Req, response: ExpressHttp.Res): void => {
-        return this.renderComponent(moduleNames.START_GAME, request, response);
+        return this.renderFullPage(moduleNames.START_GAME, request, response);
       });
 
       this.router.get('/db', (request: ExpressHttp.Req, response: ExpressHttp.Res): void => {

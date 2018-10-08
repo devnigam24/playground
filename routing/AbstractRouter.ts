@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { ExpressHttp } from '../constants/interfaces';
 import FileRendere from '../services/file-renderer';
-import { getIndexHtmlFile } from '../utils/string';
 
 class AbstractRouter {
 
@@ -20,11 +19,11 @@ class AbstractRouter {
   }
 
   protected renderFullPage(componentFilePath: string, request: ExpressHttp.Req, response: ExpressHttp.Res) {
-    return new FileRendere(componentFilePath, response).render();
+    new FileRendere(componentFilePath, response).render();
   }
 
   protected renderComponent(componentFilePath, request, response) {
-    return response.sendFile(getIndexHtmlFile(componentFilePath));
+    new FileRendere(componentFilePath, response).render();
   }
 
 }

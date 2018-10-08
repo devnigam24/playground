@@ -1,5 +1,6 @@
 import { ExpressHttp } from '../constants/interfaces';
-import { getIndexHtmlFile } from '../utils/string';
+import { getView, getConfig } from '../utils/string';
+import Handlebars from 'handlebars';
 
 export default class FileRendere {
   private name: string = '';
@@ -10,7 +11,12 @@ export default class FileRendere {
     this.response = response;
   }
 
-  public render() {
-    return this.response.sendFile(getIndexHtmlFile(this.name));
+  private getView = (): string => require(getView(this.name));
+  private getConfig = (): Object => require(getConfig(this.name)).call();
+
+  public async render() {
+    const compiledTemplate = Handlebars.compile(this.getView());
+    const compiledHtml = await compiledTemplate(this.getConfig());
+    return this.response.send(compiledHtml);
   }
 };
