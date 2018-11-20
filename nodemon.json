@@ -1,10 +1,18 @@
 {
     "restartable": "rs",
     "ignore": [
-      ".git",
-      "node_modules/**/node_modules"
+      "**/.git",
+      ".gitignore",
+      "**/node_modules",
+      "node_modules/**",
+      "**/.sass-cache",
+      "**/bower_components",
+      "LICENSE",
+      "README.json",
+      "yarn.lock"
     ],
-    "verbose": true,
+    "verbose": false,
+    "watchOptions": {},
     "execMap": {
       "js": "tsc -p . && node server.js"
     },

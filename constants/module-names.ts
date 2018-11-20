@@ -1,4 +1,11 @@
-export default {
-  START_GAME: 'start-game',
-  WELCOME_PAGE: 'welcome-page',
-}
+export const moduleRouteMap = [{
+    routeName: '/welcome',
+    moduleName: 'welcome-page'
+  },{
+    routeName: '/start',
+    moduleName: 'start-game'
+}];
+
+export const errorModuleRouteMap = {
+  buildError: 'error-page'
+};

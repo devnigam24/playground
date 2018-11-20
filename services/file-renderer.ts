@@ -1,6 +1,7 @@
-import { ExpressHttp } from '../constants/interfaces';
-import { getView, getConfig } from '../utils/string';
 import Handlebars from 'handlebars';
+import { ExpressHttp } from '../constants/interfaces';
+import { getViewJSFilePath, getConfigJSFilePath } from '../utils/string';
+import { errorModuleRouteMap } from '../constants/module-names';
 
 export default class FileRendere {
   private name: string = '';
@@ -11,12 +12,22 @@ export default class FileRendere {
     this.response = response;
   }
 
-  private getView = (): string => require(getView(this.name));
-  private getConfig = (): Object => require(getConfig(this.name)).call();
+  private getView = (templateName): string => require(getViewJSFilePath(templateName));
+  private getConfig = (templateName): any => require(getConfigJSFilePath(templateName));
 
   public async render() {
-    const compiledTemplate = Handlebars.compile(this.getView());
-    const compiledHtml = await compiledTemplate(this.getConfig());
-    return this.response.send(compiledHtml);
+    let compiledTemplate;
+    let compiledHtml;
+    try {
+      compiledTemplate = await Handlebars.compile(this.getView(this.name));
+      compiledHtml = await compiledTemplate(this.getConfig(this.name));
+    } catch (error) {
+      console.error(error);
+      compiledTemplate = await Handlebars.compile(this.getView(errorModuleRouteMap.buildError));
+      compiledHtml = await compiledTemplate(this.getConfig(errorModuleRouteMap.buildError));
+    } finally {
+      return this.response.send(compiledHtml);
+    }
+
   }
 };
