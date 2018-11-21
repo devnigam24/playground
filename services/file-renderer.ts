@@ -13,7 +13,8 @@ export default class FileRendere {
   }
 
   private getView = (templateName): string => require(getViewJSFilePath(templateName));
-  private getConfig = (templateName): any => require(getConfigJSFilePath(templateName));
+  private getConfig = (templateName): any => require(getConfigJSFilePath(templateName)).getConfig();
+  private setConfig = (templateName, config): any => require(getConfigJSFilePath(templateName)).setConfig(config);
 
   public async render() {
     let compiledTemplate;
@@ -22,7 +23,7 @@ export default class FileRendere {
       compiledTemplate = await Handlebars.compile(this.getView(this.name));
       compiledHtml = await compiledTemplate(this.getConfig(this.name));
     } catch (error) {
-      console.error(error);
+      this.setConfig(errorModuleRouteMap.buildError, error);
       compiledTemplate = await Handlebars.compile(this.getView(errorModuleRouteMap.buildError));
       compiledHtml = await compiledTemplate(this.getConfig(errorModuleRouteMap.buildError));
     } finally {

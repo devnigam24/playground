@@ -1,3 +1,5 @@
 module.exports = `
-  <h2>Some thing went wrong</h2>
+  <h1>{{code}}</h1>
+  <h2>{{message}}</h2>
+  <h2>{{stack}}</h2>
 `;
